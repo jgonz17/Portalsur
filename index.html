@@ -1,9 +1,9 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"></head><body><title>Portal Southern GSOC</title>
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex,nofollow"><meta name="referrer" content="no-referrer"></head><body><title>Portal</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap">
 <style>
-/* Tablero de protestas, paros y transporte · Southern: cabecera grafito y ámbar como el reporte Southern; mapa a la izquierda y cronología por día a la derecha */
+/* */
 :root {
   --bg: #f4f5f6; --panel: #ffffff; --ink: #1b2229; --mut: #5f6870; --line: #dfe3e6;
   --graf: #1f272e; --graf-ink: #ffffff; --graf-mut: #c3cbd1; --amb: #d97b1a; --amb-s: #fbf0e3;
@@ -207,8 +207,8 @@ table.tb { width: 100%; border-collapse: collapse; font-size: 13px; }
 
 <div class="login" id="login" hidden>
   <form id="login-form" autocomplete="on">
-    <div class="eye">GSOC · Southern LATAM</div>
-    <h1>Portal Southern</h1>
+    <div class="eye">Región Sur</div>
+    <h1>Portal</h1>
     <label>Usuario<input id="l-user" name="username" autocomplete="username" required autocapitalize="none" spellcheck="false"></label>
     <label>Contraseña<input id="l-pass" name="password" type="password" autocomplete="current-password" required></label>
     <button type="submit" id="l-btn">Entrar</button>
@@ -219,17 +219,17 @@ table.tb { width: 100%; border-collapse: collapse; font-size: 13px; }
 
 <div class="portal" id="app">
 <nav class="side" aria-label="Secciones">
-  <div class="brand"><span>GSOC · Southern</span><b>Portal</b></div>
+  <div class="brand"><span>Región Sur</span><b>Portal</b></div>
   <button type="button" class="navb" data-v="tablero"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M5.6 5.6a9 9 0 0 0 0 12.8M18.4 5.6a9 9 0 0 1 0 12.8M8.5 8.5a5 5 0 0 0 0 7M15.5 8.5a5 5 0 0 1 0 7"/></svg>Tablero en vivo</button>
   <button type="button" class="navb" data-v="dashboard"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Dashboard</button>
-  <div class="pie">Responsable regional:<br>Rodolfo Ricotta</div>
+  
 </nav>
 <div class="views">
 <div class="wrap" id="v-live">
 
   <header class="mast">
     <div>
-      <div class="eye">GSOC · Southern LATAM · Protestas, paros y transporte</div>
+      <div class="eye">Región Sur · Protestas, paros y transporte</div>
       <h1>Tablero en vivo</h1>
       <div class="sub" id="sub"></div>
     </div>
@@ -263,7 +263,7 @@ table.tb { width: 100%; border-collapse: collapse; font-size: 13px; }
 <div class="wrap" id="v-dash" hidden>
   <header class="mast">
     <div>
-      <div class="eye">GSOC · Southern LATAM · Estadísticas históricas</div>
+      <div class="eye">Región Sur · Estadísticas históricas</div>
       <h1>Dashboard</h1>
       <div class="sub" id="d-sub"></div>
     </div>
@@ -343,7 +343,7 @@ table.tb { width: 100%; border-collapse: collapse; font-size: 13px; }
   <section class="panel" aria-labelledby="h-met">
     <h2 id="h-met">Cómo se cuenta</h2>
     <ul class="metod">
-      <li>Base: protestas, paros, cortes, transporte y eventos masivos de Argentina, Chile, Uruguay, Bolivia y Paraguay. Del 20/10 al 16/11/2026 salen del tablero GSOC LATAM; desde el 16/11, del tablero en vivo y sus barridos cada 2 horas.</li>
+      <li>Base: protestas, paros, cortes, transporte y eventos masivos de Argentina, Chile, Uruguay, Bolivia y Paraguay. Del 20/10 al 16/11/2026 salen del tablero regional; desde el 16/11, del tablero en vivo y sus barridos cada 2 horas.</li>
       <li>Cada hecho cuenta una vez, en su día de inicio, aunque dure varios días. Los anunciados para fechas futuras y las amenazas sin fecha no se cuentan hasta que empiezan.</li>
       <li>Distancias en línea recta desde el punto publicado. Si el punto es aproximado, la distancia también. Los hechos de alcance nacional, provincial o sin punto no tienen distancia.</li>
       <li>Uruguay, Bolivia y Paraguay no tienen site: suman al total del país pero nunca a la cercanía.</li>
@@ -882,7 +882,7 @@ function portal(D) {
     Object.entries(vistas).forEach(([k, id]) => { document.getElementById(id).hidden = k !== v; });
     btns.forEach(b => b.setAttribute("aria-current", b.dataset.v === v ? "page" : "false"));
     if (v === "dashboard") { if (!dashListo) { dashListo = true; iniciarDash(D); } else window.dispatchEvent(new Event("resize")); }
-    document.title = v === "dashboard" ? "Dashboard Southern" : "Tablero Southern en vivo";
+    document.title = v === "dashboard" ? "Dashboard" : "Tablero en vivo";
     try { history.replaceState(null, "", "#" + v); } catch (e) {}
     try { sessionStorage.setItem("portal-vista", v); } catch (e) {}
     if (foco) window.scrollTo(0, 0);
